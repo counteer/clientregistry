@@ -27,7 +27,10 @@ public class ClientService {
 
     public List<ClientDto> getClients() {
         return repository.findAll().stream().map(modelMapper::toClientDTO).toList();
+    }
 
+    public ClientDto getClient(Long id){
+        return modelMapper.toClientDTO(repository.findById(id).orElseThrow());
     }
 
     public void addClient(ClientDto clientDto) {

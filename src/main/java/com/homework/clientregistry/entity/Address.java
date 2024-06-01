@@ -40,7 +40,7 @@ public class Address {
     private String streetAddress;
 
     @ManyToOne
-    @JoinColumn(name = "client")
+    @JoinColumn(name = "client_id")
     private Client client;
 
     public void setId(Long id) {

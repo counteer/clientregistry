@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 public class PhoneNumber {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -12,7 +12,7 @@ public class PhoneNumber {
     private String phoneNumber;
 
     @ManyToOne
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "client")
     private Client client;
 
     public void setId(Long id) {
