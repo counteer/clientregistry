@@ -4,7 +4,6 @@ import com.homework.clientregistry.dto.ClientDto;
 import com.homework.clientregistry.entity.Client;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")

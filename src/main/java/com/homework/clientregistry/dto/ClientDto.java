@@ -1,7 +1,5 @@
 package com.homework.clientregistry.dto;
 
-import com.homework.clientregistry.entity.PhoneNumber;
-
 import java.util.Date;
 import java.util.List;
 
