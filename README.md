@@ -8,5 +8,7 @@ mvn clean run
 It is looking for postgresql database with these default values:
 
 spring.datasource.url=jdbc:postgresql://localhost:5432/client
+
 spring.datasource.username=user
+
 spring.datasource.password=password
