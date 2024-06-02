@@ -1,6 +1,5 @@
 package com.homework.clientregistry;
 
-import com.homework.clientregistry.controller.ClientController;
 import com.homework.clientregistry.mapper.ClientMapper;
 import com.homework.clientregistry.repository.ClientRepository;
 import com.homework.clientregistry.service.ClientService;
