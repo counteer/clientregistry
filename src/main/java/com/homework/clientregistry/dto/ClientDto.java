@@ -1,5 +1,7 @@
 package com.homework.clientregistry.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 import java.util.List;
 
@@ -9,18 +11,24 @@ public class ClientDto {
 
     private String name;
 
+    @JsonProperty("mothers_name")
     private String mothersName;
 
+    @JsonProperty("birth_date")
     private Date birthDate;
+    @JsonProperty("mothers_place")
 
     private String birthPlace;
 
     private String socialSecurityNumber;
 
+    @JsonProperty("email_address")
+
     private String emailAddress;
 
     private List<AddressDto> addresses;
 
+    @JsonProperty("phone_numbers")
     private List<PhoneNumberDto> phoneNumbers;
 
     public Long getId() {
