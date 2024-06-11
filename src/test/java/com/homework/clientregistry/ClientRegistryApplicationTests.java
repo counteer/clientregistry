@@ -10,17 +10,14 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 @SpringBootTest(classes = {ClientRegistryApplication.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestPropertySource(locations = "classpath:application-test.properties")
@@ -40,26 +37,16 @@ class ClientRegistryApplicationTests {
     void contextLoads() {
         clientRepository.deleteAll();
         HttpEntity<ClientDto> payload = new HttpEntity<>(createClient());
-        ResponseEntity<Void> initResult = restTemplate
-                .exchange(getUrl("/clients"), HttpMethod.POST, payload, Void.class);
+        restTemplate.exchange(getUrl(), HttpMethod.POST, payload, Void.class);
         List<Client> dbContent = clientRepository.findAll();
         assertThat(dbContent.size(), is(1));
-
     }
 
     private ClientDto createClient() {
-        ClientDto result = new ClientDto();
-        result.setName("test");
-        result.setMothersName("any_mother");
-        result.setAddresses(new ArrayList<>());
-        result.setPhoneNumbers(new ArrayList<>());
-        result.setBirthPlace("any_place");
-        result.setSocialSecurityNumber("any_ssn");
-        result.setEmailAddress("any@email");
-        return result;
+        return new ClientDto(null, "test", "any_mother", null, "any_place", "ssn", "email", new ArrayList<>(), new ArrayList<>());
     }
 
-    private String getUrl(String uri) {
-        return "http://localhost:" + port + uri;
+    private String getUrl() {
+        return "http://localhost:" + port + "/clients";
     }
 }
